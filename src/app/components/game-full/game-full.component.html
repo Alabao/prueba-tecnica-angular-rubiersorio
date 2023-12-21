@@ -1,1 +1,37 @@
-<p>game-full works!</p>
+<button type="button" class="btn btn-dark mt-2"><a href="/games">BACK</a></button>
+@if (!game) {
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+} @else {
+  <div class="card mt-2">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img [src]="game.thumbnail" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><a [href]="game.game_url">{{ game.title }}</a> ({{ game.genre }}) - Made By
+            ({{ game.developer }})</h5>
+          <div class="card-text">Platform: {{ game.platform }}</div>
+          <div class="card-text mb-2">Publisher: {{ game.publisher }}</div>
+          <h6 class="card-title">Requirements:</h6>
+          <p class="card-text mb-1">Graphigs: <small
+            class="text-body-secondary">{{ game.minimum_system_requirements?.graphics || 'Not Available' }}</small></p>
+          <p class="card-text mb-1">Memory: <small
+            class="text-body-secondary">{{ game.minimum_system_requirements?.memory || 'Not Available' }}</small></p>
+          <p class="card-text mb-1">Processor: <small
+            class="text-body-secondary">{{ game.minimum_system_requirements?.processor || 'Not Available' }}</small></p>
+          <p class="card-text mb-1">Storage: <small
+            class="text-body-secondary">{{ game.minimum_system_requirements?.storage || 'Not Available' }}</small></p>
+          <p class="card-text justify-content-between">Release Date: <small
+            class="text-body-secondary">{{ game.release_date }}</small></p>
+          <h6 class="card-title">Description:</h6>
+          <p class="card-text">{{ game.description }} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+}

@@ -24,7 +24,7 @@ export class FreeGameService {
   }
 
   getGameData(id: number): Observable<FullGame> {
-    return this.httpClient.get<FullGame>(environment.apiUrlBase + `/game?id=${{id}}`);
+    return this.httpClient.get<FullGame>(environment.apiUrlBase + `/game?id=${id}`);
   }
 
   getGamesObs(): BehaviorSubject<SmartGame[]> {
