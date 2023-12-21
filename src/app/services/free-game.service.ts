@@ -1,4 +1,4 @@
-import {ErrorHandler, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {BehaviorSubject, Observable} from "rxjs";
@@ -12,7 +12,7 @@ export class FreeGameService {
 
   private games$: BehaviorSubject<SmartGame[]> = new BehaviorSubject<SmartGame[]>([]);
 
-  constructor(private httpClient: HttpClient, private handleError: ErrorHandler) {
+  constructor(private httpClient: HttpClient) {
   }
 
   loadGamesData() {

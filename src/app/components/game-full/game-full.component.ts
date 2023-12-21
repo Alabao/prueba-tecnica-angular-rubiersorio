@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FullGame} from "../../models/full-game";
 import {FreeGameService} from "../../services/free-game.service";
-import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {ActivatedRoute, ParamMap} from "@angular/router";
 import {switchMap} from "rxjs";
 import {routes} from "../../app.routes";
 
@@ -15,8 +15,7 @@ import {routes} from "../../app.routes";
 export class GameFullComponent implements OnInit{
   game: FullGame;
 
-  constructor(private freeGameService: FreeGameService, private route: ActivatedRoute,
-              private router: Router) {
+  constructor(private freeGameService: FreeGameService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
