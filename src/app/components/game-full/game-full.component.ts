@@ -1,9 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FullGame} from "../../models/full-game";
 import {FreeGameService} from "../../services/free-game.service";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
-import {Observable, switchMap} from "rxjs";
-import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
+import {switchMap} from "rxjs";
 import {routes} from "../../app.routes";
 
 @Component({
