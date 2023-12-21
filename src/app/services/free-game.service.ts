@@ -18,7 +18,7 @@ export class FreeGameService {
   loadGamesData() {
     this.httpClient.get<SmartGame[]>(environment.apiUrlBase + '/games').subscribe(val=>{
       this.games$.next(val);
-    }, error => {
+    }, () => {
       this.games$.next([]);
     });
   }
