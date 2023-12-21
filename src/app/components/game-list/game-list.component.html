@@ -1,2 +1,9 @@
 <app-game-filters></app-game-filters>
-<p>game-list works!</p>
+<div class="container text-center">
+  <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2 w-100">
+    @for (game of games; track game.id){
+      <app-game-smart [game]="game"></app-game-smart>
+    }
+  </div>
+
+</div>
