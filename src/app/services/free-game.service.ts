@@ -4,6 +4,7 @@ import {environment} from "../../environments/environment";
 import {BehaviorSubject, Observable} from "rxjs";
 import {FullGame} from "../models/full-game";
 import {SmartGame} from "../models/smart-game";
+import {Filters} from "../models/filters";
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,19 @@ export class FreeGameService {
   constructor(private httpClient: HttpClient) {
   }
 
-  loadGamesData() {
-    this.httpClient.get<SmartGame[]>(environment.apiUrlBase + '/games').subscribe(val=>{
-      this.games$.next(val);
+  loadGamesData(filters: Filters | null = null) {
+    const params = new URLSearchParams();
+    if (!!filters?.platform) {
+      params.append('platform', filters.platform);
+    }
+    if (!!filters?.category) {
+      params.append('category', filters.category);
+    }
+    this.httpClient.get<SmartGame[]>(environment.apiUrlBase + '/games' + '?' + params).subscribe(val => {
+      if (!!filters?.name)
+        this.games$.next(val.filter(game => game.title.toLowerCase().includes(filters?.name.toLowerCase())));
+      else
+        this.games$.next(val);
     }, () => {
       this.games$.next([]);
     });

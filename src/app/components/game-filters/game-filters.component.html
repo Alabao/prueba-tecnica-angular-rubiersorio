@@ -1,20 +1,21 @@
 <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand d-none d-md-block">Filters</a>
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Name" aria-label="Search">
-      <select class="form-select me-2" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+    <form class="d-flex" role="search" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input class="form-control me-2" type="search" placeholder="Tag" aria-label="Search" formControlName="name">
+      <select class="form-select me-2" aria-label="Default select example" formControlName="category">
+        <option selected value="">Select Category</option>
+        @for (category of categories; track category){
+          <option value="{{category | lowercase}}">{{category | uppercase}}</option>
+        }
       </select>
-      <select class="form-select me-2" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+      <select class="form-select me-2" aria-label="Default select example" formControlName="platform">
+        <option selected value="">Select Platform</option>
+        @for (platform of platforms; track platform){
+          <option value="{{platform | lowercase}}">{{platform | uppercase}}</option>
+        }
       </select>
+      <button class="btn btn-outline-info me-2" type="reset" (click)="clearFilter()">Clear</button>
       <button class="btn btn-outline-warning" type="submit">Search</button>
     </form>
   </div>
