@@ -11,7 +11,7 @@ export interface FullGame {
   minimum_system_requirements: SystemRequirement;
   platform: string;
   publisher: string;
-  release_date: Date;
+  release_date: string;
   screenshots: Screenshot[];
   short_description: string;
   status: string;

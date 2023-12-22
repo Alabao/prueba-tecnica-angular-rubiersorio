@@ -7,7 +7,7 @@ export interface SmartGame {
   genre: string;
   platform: string;
   publisher: string;
-  release_date: Date;
+  release_date: string;
   short_description: string;
   thumbnail: string;
 }
